@@ -30,7 +30,7 @@ export default function CommunicationStep() {
           How engaged are you hoping to be in this program?
         </label>
         <div className="flex text-s mt-4">
-          <span>Very Casual</span>
+          <span className='ml-2'>Very Casual</span>
           <div className='flex-1 mx-4 mt-2'>
               <Slider
               min={0}
@@ -50,7 +50,7 @@ export default function CommunicationStep() {
         How do you prefer to communicate? <br></br>Hands-on (video calls, regular check-ins) or Chat (DMs, emails, etc.) 
         </label>
         <div className="flex text-s mt-4">
-          <span className='mr-4'>Hands-on</span>
+          <span className='mr-2 ml-2'>Hands-on</span>
           <div className='flex-1 mx-4 mt-2'>
               <Slider
               min={0}
@@ -60,7 +60,7 @@ export default function CommunicationStep() {
               onValueChange={setCom}
               />
           </div>
-        <span className='ml-9'>Chat</span>
+        <span className='ml-3 mr-6'>Chat</span>
         </div>
       </div>
 
