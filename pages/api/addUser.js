@@ -1,31 +1,22 @@
-import { doc, collection, runTransaction, setDoc } from "firebase/firestore";
 import { db } from "../../backend/firebaseConfig";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
+
+      const { USER_UID } = req.query;
+      const userRef = doc(db, "idMap", USER_UID);
+      const userSnapshot = await getDoc(userRef);
+
+      const { userId } = userSnapshot.data();
+
       const { isMentor, Name, isStudent, Hobbies, Values, Preferences, LinkedIn } = req.body;
 
-      const counterDocRef = doc(db, "counters", "userId");
 
-      const newUserId = await runTransaction(db, async (transaction) => {
-        const counterDoc = await transaction.get(counterDocRef);
-
-        let lastUserId = 0;
-        if (counterDoc.exists()) {
-          lastUserId = counterDoc.data().lastUserId || 0;
-        }
-
-        const nextUserId = lastUserId + 1;
-
-        // Update the counter
-        transaction.set(counterDocRef, { lastUserId: nextUserId });
-
-        return nextUserId;
-      });
 
       // Use newUserId as document ID (converted to string because Firestore IDs are strings)
-      const userDocRef = doc(db, 'users', newUserId.toString());
+      const userDocRef = doc(db, 'users', userId);
 
       await setDoc(userDocRef, {
         isMentor,
@@ -38,7 +29,7 @@ export default async function handler(req, res) {
         Liked: [],
       });
 
-      res.status(200).json({ message: `${newUserId} added` });
+      res.status(200).json({ message: `${userId} added` });
     } catch (err) {
       console.error(err);
       res.status(500).json({ message: "Error adding user" });
