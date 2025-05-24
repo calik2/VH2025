@@ -4,13 +4,11 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { RadioGroup } from '@/components/ui/radio-group';
 
 const options = ['Learning', 'Impact', 'Creativity', 'Stability', 'Autonomy',
   'Collaboration', 'Growth', 'Innovation', 'Inclusion', 'Ethics', 'Flexibility',
   'Recognition', 'Challenge', 'Security', 'Purpose', 'Leadership', 'Transparency'
 ];
-
 
 
 export default function PersonalStep() {
@@ -27,13 +25,12 @@ export default function PersonalStep() {
   const router = useRouter();
 
   const [hobbies, setHobbies] = useState('');
-  const [values, setValues] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => { // when next button is pressed
     e.preventDefault();
 
-    // TODO FOR BACKEND: STORE DATA SOMEWEHRE
-    console.log({ hobbies, values});
+    // TODO FOR BACKEND: STORE DATA 
+    console.log({ hobbies, values: selected.join(', ')});
 
     router.push('/onboarding/preferences');
   };
