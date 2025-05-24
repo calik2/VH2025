@@ -49,6 +49,7 @@ export default function InfoStep() {
           type="url"
           value={linkedin}
           onChange={(e) => setLinkedin(e.target.value)}
+          
         />
       </div>
 
