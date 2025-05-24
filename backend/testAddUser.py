@@ -1,6 +1,8 @@
 import requests
 
 url = "http://localhost:3000/api/addUser"
+params = { "USER_UID": "JFcolJgrT1W0vNyeXPgAdS0yLNN2" }
+
 
 data = {
     "isMentor": True,
@@ -12,7 +14,7 @@ data = {
     "LinkedIn": "https://linkedin.com/in/rheashetti",
 }
 
-response = requests.post(url, json=data)
+response = requests.post(url, json=data, params=params)
 
 print("Status code:", response.status_code)
 print("Response JSON:", response.json())
