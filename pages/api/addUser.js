@@ -4,10 +4,9 @@ import { db } from "../../backend/firebaseConfig";
 export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
-      const { isMentor, Name, Hobbies, Values, Preferences, LinkedIn } = req.body;
-      const targetCollection = isMentor ? "mentors" : "mentees";
+      const { isMentor, Name, isStudent, Hobbies, Values, Preferences, LinkedIn } = req.body;
 
-      const counterDocRef = doc(db, "counters", "users");
+      const counterDocRef = doc(db, "counters", "userId");
 
       const newUserId = await runTransaction(db, async (transaction) => {
         const counterDoc = await transaction.get(counterDocRef);
@@ -26,17 +25,20 @@ export default async function handler(req, res) {
       });
 
       // Use newUserId as document ID (converted to string because Firestore IDs are strings)
-      const userDocRef = doc(db, targetCollection, newUserId.toString());
+      const userDocRef = doc(db, 'users', newUserId.toString());
 
       await setDoc(userDocRef, {
+        isMentor,
         Name,
+        isStudent,
         Hobbies,
         Values,
         Preferences,
         LinkedIn,
+        Liked: [],
       });
 
-      res.status(200).json({ message: `${isMentor ? "Mentor" : "Mentee"} added`, userId: newUserId });
+      res.status(200).json({ message: `${newUserId} added` });
     } catch (err) {
       console.error(err);
       res.status(500).json({ message: "Error adding user" });
