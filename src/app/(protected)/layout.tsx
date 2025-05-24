@@ -4,6 +4,9 @@ import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import Image from "next/image";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
+import { AppSidebar } from "@/components/app-sidebar"
+
 
 export default function ProtectedLayout({
   children,
@@ -29,14 +32,21 @@ export default function ProtectedLayout({
 
   return (
     <>
-      <header className="w-full bg-white shadow-md">
-        <div className="container flex justify-between py-3">
-          <div className="flex mx-4 items-center justify-center gap-4">
-            <h1 className='text-2xl font-extrabold tracking-wide text-green-800'>ZotBin's Database Visualizer</h1>
-          </div>
-        </div>
-      </header>
-      <main className="container mx-auto px-6 py-8">{children}</main>
+      <SidebarProvider>
+        <AppSidebar />
+        <main>
+          <SidebarTrigger />
+          {children}
+        </main>
+      </SidebarProvider>
     </>
   );
 } 
+
+
+
+// export default function Layout({ children }: { children: React.ReactNode }) {
+//   return (
+    
+//   )
+// }
