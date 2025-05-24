@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 
 export default function InfoStep() {
   const router = useRouter();
@@ -10,58 +12,62 @@ export default function InfoStep() {
   const [linkedin, setLinkedin] = useState('');
   const [photo, setPhoto] = useState<File | null>(null);
 
-  const handleNext = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => { // when next button is pressed
     e.preventDefault();
 
-    // TODO: save this to context, server, or localStorage
+    // TODO FOR BACKEND: STORE DATA SOMEWEHRE
     console.log({ name, linkedin, photo });
 
     router.push('/onboarding/personal');
   };
 
   return (
-    <form onSubmit={handleNext} className="space-y-6">
-      <div>
-        <label className="block text-sm font-medium mb-1" htmlFor="name">What’s your name?</label>
-        <input
+    <form onSubmit={handleSubmit} className="space-y-6">
+      {/* Name Question */}
+      <div> 
+        <label htmlFor="name" className="block text-med font-medium mb-1">
+          What’s your name?
+        </label>
+        <Input
           id="name"
+          placeholder="Name"
           type="text"
-          className="w-full border border-gray-300 rounded-md p-2"
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
         />
       </div>
 
+      {/* LinkedIn Question */}
       <div>
-        <label className="block text-sm font-medium mb-1" htmlFor="linkedin">What’s your LinkedIn profile URL?</label>
-        <input
+        <label htmlFor="linkedin" className="block text-med font-medium mb-1">
+          What’s your LinkedIn profile URL?
+        </label>
+        <Input
           id="linkedin"
+          placeholder='https://www.linkedin.com/in/...'
           type="url"
-          className="w-full border border-gray-300 rounded-md p-2"
           value={linkedin}
           onChange={(e) => setLinkedin(e.target.value)}
-          required
         />
       </div>
 
+      {/* Photo Question */}
       <div>
-        <label className="block text-sm font-medium mb-1" htmlFor="photo">Upload a photo of yourself you’d like to share:</label>
-        <input
+        <label htmlFor="photo" className="block text-med font-medium mb-1">
+          Upload a photo of yourself you'd like to share:
+        </label>
+        <Input
           id="photo"
           type="file"
           accept="image/*"
-          onChange={(e) => setPhoto(e.target.files?.[0] || null)}
+          onChange={(e) => setPhoto(e.target.files?.[0] || null)} // only allows photo files
+          className="file:border-0 file:bg-secondary file:text-sm file:font-medium file:text-foreground"
         />
       </div>
 
       <div className="text-right">
-        <button
-          type="submit"
-          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-        >
-          Next
-        </button>
+        <Button type="submit" >Next</Button>
       </div>
     </form>
   );
