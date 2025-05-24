@@ -3,21 +3,24 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
+import {Slider} from '@/components/ui/slider';
+import { Label } from "@/components/ui/label"
+import {RadioGroup, RadioGroupItem} from '@/components/ui/radio-group';
 
-export default function InfoStep() {
+export default function PreferencesStep() {
   const router = useRouter();
 
-  const [name, setName] = useState('');
-  const [linkedin, setLinkedin] = useState('');
-  const [photo, setPhoto] = useState<File | null>(null);
+  const [advice, setAdvice] = useState([0]);
+  const [connection, setConnection] = useState("");
+  const [values, setValues] = useState([0]);
 
   const handleSubmit = (e: React.FormEvent) => { // when next button is pressed
     e.preventDefault();
 
     // TODO FOR BACKEND: STORE DATA SOMEWEHRE
-    console.log({ name, linkedin, photo });
+    console.log({ advice, connection, values });
 
-    router.push('/onboarding/personal');
+    router.push('/onboarding/communication');
   };
 
   return (
@@ -27,7 +30,19 @@ export default function InfoStep() {
         <label htmlFor="advice" className="block text-med font-medium mb-1">
           What kind of advice are you looking for?
         </label>
-       
+        <div className="flex text-s mt-4">
+          <span>Career</span>
+          <div className='flex-1 mx-4 mt-2'>
+              <Slider
+              min={0}
+              max={5}
+              step={1}
+              value={advice}
+              onValueChange={setAdvice}
+              />
+          </div>
+        <span>Social</span>
+        </div>
       </div>
 
       {/* Connection Question */}
@@ -35,6 +50,41 @@ export default function InfoStep() {
         <label htmlFor="connection" className="block text-med font-medium mb-1">
           Who would you prefer to connect with?
         </label>
+        <div className="flex justify-center text-med mt-4">
+          <RadioGroup defaultValue="student" onValueChange={setConnection}>
+            <div className='flex items-center space-x-2 gap-12'>
+              <div className='justify-center space-x-2'>
+              <RadioGroupItem value="student" id="r1" />
+              <Label htmlFor="r1">Student</Label>
+              </div>
+              <div className='justify-center space-x-2'>
+              <RadioGroupItem value="professional" id="r2" />
+              <Label htmlFor="r2">Industry Professional</Label>
+              </div>
+            </div>
+          </RadioGroup>
+        </div>
+        
+      </div>
+
+      {/* Values Question */}
+      <div>
+        <label htmlFor="values" className="block text-med font-medium mb-1">
+          How important is it to you that you and your match share similar values?
+        </label>
+        <div className="flex text-s mt-4">
+          <span>Important</span>
+          <div className='flex-1 mx-4 mt-2'>
+              <Slider
+              min={0}
+              max={5}
+              step={1}
+              value={values}
+              onValueChange={setValues}
+              />
+          </div>
+        <span>Don't Care!</span>
+        </div>
       </div>
 
       <div className="text-right">
