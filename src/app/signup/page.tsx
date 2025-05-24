@@ -11,7 +11,7 @@ export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const { login, signInWithGoogle } = useAuth();
+  const { signup } = useAuth();
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -19,26 +19,26 @@ export default function LoginPage() {
     setIsLoading(true);
     
     try {
-      await login(email, password);
-      router.push('/dashboard');
+      await signup(email, password);
+      router.push('/onboarding/info');
     } catch (error) {
-      console.error('Login error:', error);
+      console.error('Sign up error:', error);
     } finally {
       setIsLoading(false);
     }
   };
 
-  const handleGoogleSignIn = async () => {
-    setIsLoading(true);
-    try {
-      await signInWithGoogle();
-      router.push('/dashboard');
-    } catch (error) {
-      console.error('Google sign-in error:', error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+//   const handleGoogleSignIn = async () => {
+//     setIsLoading(true);
+//     try {
+//       await signInWithGoogle();
+//       router.push('/dashboard');
+//     } catch (error) {
+//       console.error('Google sign-in error:', error);
+//     } finally {
+//       setIsLoading(false);
+//     }
+//   };
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
@@ -48,7 +48,7 @@ export default function LoginPage() {
           <h2 className="text-2xl text-center font-extrabold text-green-800">INSERT WELCOME MESSAGE</h2>
           {/* <Image src="/images/zotbins_updated.png" alt="ZotBins Logo" width={60} height={60} className="mb-4" /> */}
           {/* <h2 className="text-2xl text-center font-extrabold text-green-800">Welcome to ZotBin's Database Visualizer</h2> */}
-          <p className="mt-2 text-sm text-gray-600">Please sign in to continue</p>
+          <p className="mt-2 text-sm text-gray-600">Please sign up to continue</p>
         </div>
 
         <form onSubmit={handleSubmit} className="mt-8 space-y-6">
@@ -92,7 +92,7 @@ export default function LoginPage() {
               {isLoading ? (
                 <Icons.spinner className="h-5 w-5 animate-spin" />
               ) : (
-                'Sign in'
+                'Sign up'
               )}
             </button>
           </div>
