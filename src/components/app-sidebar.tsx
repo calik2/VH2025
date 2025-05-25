@@ -1,4 +1,5 @@
 import { Home, Inbox, User, LogOut } from "lucide-react"
+import Image from "next/image"
 
 import {
   Sidebar,
@@ -40,7 +41,11 @@ export function AppSidebar() {
     <Sidebar>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>mentHER</SidebarGroupLabel>
+        <SidebarGroupLabel asChild>
+          <div className="flex items-center mt-4 mb-4 gap-2">
+            <Image src="/logo/mentHer_logo.png" alt="MentHer Logo" width={200} height={24} />
+          </div>
+        </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (

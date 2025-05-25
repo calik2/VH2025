@@ -10,6 +10,7 @@ import { Linkedin } from "lucide-react"
 
 interface ProfileData {
   name: string
+  type: string
   avatar: string
   linkedin: string
   interests: string[]
@@ -19,6 +20,7 @@ interface ProfileData {
 export default function ProfileCard() { // NEED TO REPLACE WITH DATA RETRIEVED FROM DATABASE
   const profile: ProfileData = {
     name: "Sarah Johnson",
+    type: "Industry Professional",
     avatar: "/placeholder.svg?height=200&width=200",
     linkedin: "https://linkedin.com/in/sarahjohnson",
     interests: ["React", "TypeScript", "Design Systems", "Photography"],
@@ -37,19 +39,19 @@ export default function ProfileCard() { // NEED TO REPLACE WITH DATA RETRIEVED F
     <div className="container justify-center mx-auto px-10 py-10 px-4 flex items-center">
     <Card className="justify-center w-full items-center">
       <CardHeader className="flex flex-col items-center space-y-4 pb-6">
-        <Avatar className="h-32 w-32">
+        <Avatar className="h-56 w-56">
           <AvatarImage src={profile.avatar || "/placeholder.svg"} alt="Profile" />
           <AvatarFallback className="text-3xl">{getInitials(profile.name)}</AvatarFallback>
         </Avatar>
         <div className="text-center space-y-1">
           <h2 className="text-3xl font-bold">{profile.name}</h2>
-          <p className="text-muted-foreground text-lg">Software Developer</p>
+          <p className="text-muted-foreground text-lg">{profile.type}</p>
         </div>
       </CardHeader>
 
       <CardContent className="space-y-6">
         {/* LinkedIn */}
-        <div>
+        <div className="px-20 justify-center">
           <Label className="text-sm font-medium flex items-center mb-2">
             <Linkedin className="h-4 w-4 mr-2" />
             LinkedIn
@@ -67,7 +69,7 @@ export default function ProfileCard() { // NEED TO REPLACE WITH DATA RETRIEVED F
         <Separator />
 
         {/* Interests */}
-        <div>
+        <div className="px-20 justify-center">
           <Label className="text-sm font-medium mb-3 block">Interests</Label>
           <div className="flex flex-wrap gap-2">
             {profile.interests.map((interest, index) => (
@@ -77,10 +79,10 @@ export default function ProfileCard() { // NEED TO REPLACE WITH DATA RETRIEVED F
             ))}
           </div>
         </div>
-        <div>
+        <div className="px-20 justify-center">
           <Label className="text-sm font-medium mb-3 block">Values</Label>
           <div className="flex flex-wrap gap-2">
-            {profile.interests.map((values, index) => (
+            {profile.values.map((values, index) => (
               <Badge key={index} variant="secondary" className="text-sm">
                 {values}
               </Badge>
@@ -91,28 +93,28 @@ export default function ProfileCard() { // NEED TO REPLACE WITH DATA RETRIEVED F
         <Separator />
 
         {/* Preferences */}
-        <div>
+        <div className="px-20 justify-center">
           <Label className="text-sm font-medium mb-2 block">
             How important you view sharing values:
           </Label>
           <div className="flex items-center text-sm">
-            <span className="text-muted-foreground">Don't Care!</span>
+            <span className="text-black">Don't Care!</span>
             <div className="flex-1 mx-4">
               <Slider min={0} max={5} step={1} value={[3]} disabled /> {/* INSERT VALUE HERE */}
             </div>
-            <span className="text-muted-foreground">Important</span>
+            <span className="text-black">Important</span>
           </div>
         </div>
-        <div>
+        <div className="px-20 justify-center">
           <Label className="text-sm font-medium mb-2 block">
             The kind of advice you are hoping to exchange:
           </Label>
           <div className="flex items-center text-sm">
-            <span className="text-muted-foreground">Career</span>
+            <span className="text-black">Career</span>
             <div className="flex-1 mx-4">
               <Slider min={0} max={5} step={1} value={[3]} disabled /> {/* INSERT VALUE HERE */}
             </div>
-            <span className="text-muted-foreground">Social</span>
+            <span className="text-black">Social</span>
           </div>
         </div>
       </CardContent>

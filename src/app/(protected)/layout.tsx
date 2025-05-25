@@ -34,9 +34,9 @@ export default function ProtectedLayout({
     <>
       <SidebarProvider>
         <AppSidebar />
-        <main className="flex w-full items-center justify-center min-h-svh px-4">
+        <main className="flex w-full items-center justify-center px-4">
   <SidebarTrigger className="absolute top-4 left-4" />
-  <div className="max-w-md w-full">
+  <div className="w-full">
     {children}
   </div>
 </main>
