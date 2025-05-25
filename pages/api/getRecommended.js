@@ -28,8 +28,10 @@ export default async function handler(req, res) {
         scoredUsers.push({ otherUser, score });
     }
     scoredUsers.sort((a, b) => b.score - a.score);
+
+    const topFive = scoredUsers.slice(0,5);
     
-    return res.status(200).json({ scoredUsers });
+    return res.status(200).json({ scoredUsers: topFive});
     
   } else {
     res.status(405).json({ message: "Method not allowed" });

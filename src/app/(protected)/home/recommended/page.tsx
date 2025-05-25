@@ -1,15 +1,11 @@
-import Link from "next/link"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Heart, Home } from "lucide-react"
+import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import { NavigationBar } from "@/components/app-navbar"
 import { cookies } from 'next/headers';
-import { collection, doc, getDoc, query, where, getDocs } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../../../../backend/firebaseConfig";
 import { Badge } from "@/components/ui/badge"
 import { ExternalLink } from "lucide-react"
-import Image from "next/image"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Slider } from "@/components/ui/slider"
 import { Label } from "@/components/ui/label"
@@ -79,9 +75,9 @@ function MentorCard({ user }: MentorCardProps) {
       <CardContent className="space-y-4">
         {/* Profile Picture */}
         <div className="flex justify-center">
-          <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-gray-200">
-          <Avatar className="h-24 w-24">
-          <AvatarImage src={user.otherUser.photoURL || "/file.svg"} alt="Profile" />
+          <div className="w-56 h-56 rounded-full overflow-hidden border-2 border-gray-200">
+          <Avatar className="h-56 w-56">
+          <AvatarImage src={user.otherUser.photoURL || "/default.png"} alt="Profile" className="w-full h-full object-cover object-center" />
           <AvatarFallback className="text-3xl">{getInitials(user.otherUser.Name)}</AvatarFallback>
         </Avatar>
           </div>
