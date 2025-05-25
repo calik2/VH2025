@@ -21,7 +21,7 @@ export default async function handler(req, res) {
     const scoredUsers = []
     for(const otherUser of allOppositeUsers) {
        const score = calculateScore(userData, otherUser);
-        scoredUsers.push({ id: otherUser.id, score });
+        scoredUsers.push({ otherUser, score });
     }
     scoredUsers.sort((a, b) => b.score - a.score);
     
@@ -38,7 +38,6 @@ function calculateScore(userData, otherUser) {
   const adviceTypeScore = Math.abs(userData.Preferences.adviceType - otherUser.Preferences.adviceType) * 5;
 
   const engagementScore = Math.abs(userData.Preferences.engagement - otherUser.Preferences.engagement) * 5;
-
 
   const communicationScore = Math.abs(userData.Preferences.communicationStyle - otherUser.Preferences.communicationStyle) * 5;
 
