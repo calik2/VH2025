@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { Icons } from '@/components/icons';
 import { Button } from '@/components/ui/button';
 
+
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -21,6 +22,7 @@ export default function LoginPage() {
     try {
       const userCredential = await login(email, password);
       const uid = userCredential.uid;
+      document.cookie = `uid=${uid}; path=/; max-age=86400`;
       localStorage.setItem('USER_UID', uid);
       console.log("STORED IDDDD");
       const response = await fetch(`/api/login?USER_UID=${uid}`);

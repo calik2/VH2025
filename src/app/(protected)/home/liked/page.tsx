@@ -254,3 +254,18 @@ export default function Liked() {
 //   )
 // }
 
+// type ReccomendedMentors = {
+//   allOppositeUsers:[
+//     {
+//       id: number;
+//       isStudent: boolean;
+//       Values: [string];
+//       photoURL: string;
+//       isMentor: boolean;
+//       Hobbies: string;
+//       Name: string;
+//       LinkedIn: string;
+//     }
+//   ];
+// }
+
