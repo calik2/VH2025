@@ -55,11 +55,11 @@ export default function Recommended() {
   }
 
   return (
-    <div className="justify-center container mx-auto py-10 px-4 flex flex-col  items-center">
-      <NavigationBar/>
+    <div className="container mx-auto py-10 px-4 flex flex-col items-center">
+        <NavigationBar/>
       <h1 className="text-3xl font-bold mb-8">Reccomended Mentors</h1>
     
-      <Carousel className="w-full max-w-5xl">
+      <Carousel className="w-full">
         <CarouselContent>
           {
             recommendedMentors.map((mentor) => (
@@ -103,65 +103,13 @@ export default function Recommended() {
             ))
           }
         </CarouselContent>
-        <CarouselPrevious className="left-2" />
-        <CarouselNext className="right-2" />
+        <CarouselPrevious className="group left-4 text-white bg-[#4F364B] hover:bg-[#CABAD7]"> 
+        <svg className="w-5 h-5 text-gray-500 group-hover:[#4F364B]" />
+        </CarouselPrevious>
+        <CarouselNext className="right-4 group text-white bg-[#4F364B] hover:bg-[#CABAD7]">
+        <svg className="w-5 h-5 text-gray-500 group-hover:[#4F364B]" />
+        </CarouselNext>
       </Carousel>
     </div>
   )
-  //   <div className="container mx-auto py-10 px-4 flex flex-col items-center">
-  //       <NavigationBar/>
-  //       <h1 className="text-3xl font-bold mb-8">Reccomended Mentors</h1>
-
-  //     <p className="text-muted-foreground mb-8">
-  //       Based on your profile and interests, we've selected these top mentors for you.
-  //     </p>
-
-  //     <div className="flex-1 flex items-center justify-center">
-  //       <Carousel className="w-full max-w-5xl">
-  //         <CarouselContent>
-  //           {recommendedMentors.map((mentor) => (
-  //             <CarouselItem key={mentor.id} className="md:basis-2/3 lg:basis-1/2">
-  //               <div className="p-2 h-full">
-  //                 <Card className="h-full relative">
-  //                   <Button
-  //                     variant="ghost"
-  //                     size="icon"
-  //                     className="absolute top-2 right-2 z-10"
-  //                     onClick={() => toggleLike(mentor.id)}
-  //                     aria-label={likedMentors.includes(mentor.id) ? "Unlike mentor" : "Like mentor"}
-  //                   >
-  //                     <Heart
-  //                       className={
-  //                         likedMentors.includes(mentor.id) ? "fill-red-500 text-red-500" : "text-muted-foreground"
-  //                       }
-  //                       size={20}
-  //                     />
-  //                   </Button>
-  //                   <CardHeader>
-  //                     <div className="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full w-fit mb-2">
-  //                       {mentor.match}
-  //                     </div>
-  //                     <CardTitle>{mentor.title}</CardTitle>
-  //                     <CardDescription>{mentor.description}</CardDescription>
-  //                   </CardHeader>
-  //                   <CardContent>
-  //                     <div className="aspect-video bg-muted rounded-md flex items-center justify-center">
-  //                       <span className="text-muted-foreground">Mentor Profile</span>
-  //                     </div>
-  //                   </CardContent>
-  //                   <CardFooter className="flex flex-col items-start">
-  //                     <p className="text-sm text-muted-foreground mb-2">{mentor.footer}</p>
-  //                     <Button size="sm">Request Mentorship</Button>
-  //                   </CardFooter>
-  //                 </Card>
-  //               </div>
-  //             </CarouselItem>
-  //           ))}
-  //         </CarouselContent>
-  //         <CarouselPrevious className="left-2" />
-  //         <CarouselNext className="right-2" />
-  //       </Carousel>
-  //     </div>
-  //   </div>
-  // )
 }

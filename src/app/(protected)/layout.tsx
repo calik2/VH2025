@@ -36,7 +36,9 @@ export default function ProtectedLayout({
         <AppSidebar />
         <main>
           <SidebarTrigger />
+          <div>
           {children}
+          </div>
         </main>
       </SidebarProvider>
     </>

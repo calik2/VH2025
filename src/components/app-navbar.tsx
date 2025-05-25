@@ -18,6 +18,7 @@ import {
 
 export function NavigationBar() {
   return (
+    <div className="w-full flex justify-center">
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
@@ -43,6 +44,7 @@ export function NavigationBar() {
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
+    </div>
   )
 }
 
