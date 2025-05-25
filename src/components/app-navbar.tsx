@@ -22,9 +22,9 @@ export function NavigationBar() {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <Link href="/home/reccomended" legacyBehavior passHref>
+          <Link href="/home/recommended" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              Reccomended
+              Recommended
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>

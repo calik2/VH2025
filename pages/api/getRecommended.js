@@ -4,10 +4,14 @@ import { collection, doc, getDoc, query, where, getDocs } from "firebase/firesto
 export default async function handler(req, res) {
   if (req.method === "GET") {
     const { USER_ID } = req.query;
+    //console.log(USER_ID);
 
     // get data for the user with USER_ID
     const userRef = doc(db, "users", USER_ID);
+    //console.log(USER_ID);
     const userSnapshot = await getDoc(userRef);
+    //console.log(userSnapshot);
+
     const userData = userSnapshot.data();
     const userIsMentor = userData.isMentor;
 
@@ -21,7 +25,7 @@ export default async function handler(req, res) {
     const scoredUsers = []
     for(const otherUser of allOppositeUsers) {
        const score = calculateScore(userData, otherUser);
-        scoredUsers.push({ id: otherUser.id, score });
+        scoredUsers.push({ otherUser, score });
     }
     scoredUsers.sort((a, b) => b.score - a.score);
     
