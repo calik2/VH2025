@@ -6,6 +6,8 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Label } from "@/components/ui/label"
 import {RadioGroup, RadioGroupItem} from '@/components/ui/radio-group';
+import { storage } from '../../../../backend/firebaseConfig'; // Adjust the import path as necessary
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 export default function InfoStep() {
   const router = useRouter();
@@ -17,22 +19,33 @@ export default function InfoStep() {
   const [isAStudent, setStudent] = useState("student");
 
 
-  const handleSubmit = (e: React.FormEvent) => { // when next button is pressed
+  const handleSubmit = async (e: React.FormEvent) => { // when next button is pressed
     e.preventDefault();
 
     // TODO FOR BACKEND: STORE DATA SOMEWEHRE
     const isMentor = mentor === "mentor"
     const isStudent = isAStudent === "student"
+
+    let photoURL = null;
+
+    if (photo) {
+      const photoRef = ref(storage, `photos/${photo.name}`);
+      const snapshot = await uploadBytes(photoRef, photo);
+      photoURL  = await getDownloadURL(snapshot.ref);
+      console.log("Uploaded image URL:", photoURL);
+    }
+
     const onboardingData = {
       isMentor: isMentor,
       isStudent: isStudent,
       Name,
       LinkedIn,
+      photoURL,
       // optionally: add photo.name or type here, not full file
     };
     localStorage.setItem('onboardingData', JSON.stringify(onboardingData));
     
-    console.log({ Name, LinkedIn, mentor, isAStudent, photo });
+    console.log({ Name, LinkedIn, mentor, isAStudent, photoURL });
 
     router.push('/onboarding/personal');
   };
@@ -125,7 +138,7 @@ export default function InfoStep() {
       </div>
 
       <div className="text-right">
-        <Button type="submit" >Next</Button>
+        <Button type="submit" style={{backgroundColor: "#4f364b"}} >Next</Button>
       </div>
     </form>
   );

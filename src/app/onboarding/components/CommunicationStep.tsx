@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import {Slider} from '@/components/ui/slider';
 import { Label } from "@/components/ui/label"
 import {RadioGroup, RadioGroupItem} from '@/components/ui/radio-group';
+import { on } from 'events';
 
 
 export default function CommunicationStep() {
@@ -29,10 +30,10 @@ export default function CommunicationStep() {
         communicationStyle: communicationStyle[0],
       },
     };
-  
+    
     localStorage.setItem('onboardingData', JSON.stringify(updatedData));
     const onboardingData = JSON.parse(localStorage.getItem('onboardingData') || '{}');
-    
+    console.log(onboardingData);
     try {
       const USER_UID = localStorage.getItem('USER_UID')?.toString();
 
@@ -101,7 +102,7 @@ export default function CommunicationStep() {
       </div>
 
       <div className="text-right">
-        <Button type="submit" >Next</Button>
+        <Button type="submit" style={{backgroundColor: '#4f364b' }}>Next</Button>
       </div>
     </form>
   );

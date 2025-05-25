@@ -102,7 +102,7 @@ export default function PreferencesStep() {
       </div>
 
       <div className="text-right">
-        <Button type="submit" >Next</Button>
+        <Button type="submit" style={{backgroundColor: '#4f364b' }} >Next</Button>
       </div>
     </form>
   );

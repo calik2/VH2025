@@ -11,9 +11,7 @@ export default async function handler(req, res) {
 
       const { userId } = userSnapshot.data();
 
-      const { isMentor, Name, isStudent, Hobbies, Values, Preferences, LinkedIn } = req.body;
-
-
+      const { isMentor, Name, isStudent, Hobbies, Values, Preferences, LinkedIn, photoURL } = req.body;
 
       // Use newUserId as document ID (converted to string because Firestore IDs are strings)
       const userDocRef = doc(db, 'users', userId);
@@ -27,6 +25,7 @@ export default async function handler(req, res) {
         Preferences,
         LinkedIn,
         Liked: [],
+        photoURL,
       });
 
       res.status(200).json({ message: `${userId} added` });

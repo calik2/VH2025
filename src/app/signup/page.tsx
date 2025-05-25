@@ -144,7 +144,7 @@ export default function LoginPage() {
           </button> */}
 
           <p>Already have an account?</p>
-          <Button><Link href="/login">Sign in here</Link></Button>
+          <Button style={{backgroundColor: '#4f364b'}}><Link href="/login">Sign in here</Link></Button>
         </form>
       </div>
     </div>
