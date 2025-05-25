@@ -1,5 +1,11 @@
-export default function Profile() {
-    return (
-        <h1>profile</h1>
-    )
+import ProfileCard from "@/components/profile-card"
+
+export default function Page() {
+  return (
+    <main >
+      <div>
+        <ProfileCard />
+      </div>
+    </main>
+  )
 }

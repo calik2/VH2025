@@ -34,10 +34,12 @@ export default function ProtectedLayout({
     <>
       <SidebarProvider>
         <AppSidebar />
-        <main>
-          <SidebarTrigger />
-          {children}
-        </main>
+        <main className="flex w-full items-center justify-center min-h-svh px-4">
+  <SidebarTrigger className="absolute top-4 left-4" />
+  <div className="max-w-md w-full">
+    {children}
+  </div>
+</main>
       </SidebarProvider>
     </>
   );
