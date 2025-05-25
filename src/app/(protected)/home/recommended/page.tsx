@@ -10,6 +10,7 @@ import { db } from "../../../../../backend/firebaseConfig";
 import { Badge } from "@/components/ui/badge"
 import { ExternalLink } from "lucide-react"
 import Image from "next/image"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 
 
@@ -30,6 +31,15 @@ type ReccomendedMentors = {
 
 interface MentorCardProps {
   user: Mentor
+}
+
+const getInitials = (name?: string) => {
+  if (!name) return ""
+  return name
+    .split(" ")
+    .map(n => n[0])
+    .join("")
+    .toUpperCase()
 }
 
 function MentorCard({ user }: MentorCardProps) {
@@ -59,13 +69,10 @@ function MentorCard({ user }: MentorCardProps) {
         {/* Profile Picture */}
         <div className="flex justify-center">
           <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-gray-200">
-            {/* <Image
-              src={user.photoURL || "/placeholder.svg"}
-              alt={`${user.Name}'s profile picture`}
-              fill
-              className="object-cover"
-              crossOrigin="anonymous"
-            /> */}
+          <Avatar className="h-24 w-24">
+          <AvatarImage src={user.photoURL || "/file.svg"} alt="Profile" />
+          <AvatarFallback className="text-3xl">{getInitials(user.Name)}</AvatarFallback>
+        </Avatar>
           </div>
         </div>
 
