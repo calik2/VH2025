@@ -72,8 +72,8 @@ function MentorCard({ user }: MentorCardProps) {
         <div className="flex justify-center">
           <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-gray-200">
           <Avatar className="h-24 w-24">
-          <AvatarImage src={user.photoURL || "/file.svg"} alt="Profile" />
-          <AvatarFallback className="text-3xl">{getInitials(user.Name)}</AvatarFallback>
+          <AvatarImage src={user.otherUser.photoURL || "/file.svg"} alt="Profile" />
+          <AvatarFallback className="text-3xl">{getInitials(user.otherUser.Name)}</AvatarFallback>
         </Avatar>
           </div>
         </div>
@@ -125,7 +125,7 @@ export default async function Recommended() {
       {/* push page content down so it doesn’t live under the bar */}
       <div className="container mx-auto py-10 px-4 flex flex-col items-center">
       <NavigationBar />
-        <h1 className="text-3xl font-bold mb-10">Recommended Mentors</h1>
+        <h1 className="text-3xl font-bold mb-10">Recommended</h1>
     
       <Carousel className="w-full h-full flex flex-col">
         <CarouselContent className="h-[800px]">

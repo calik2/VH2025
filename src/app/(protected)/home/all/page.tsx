@@ -234,7 +234,7 @@ export default async function Recommended() {
     return (
         <div className="container mx-auto py-10 px-4 flex flex-col items-center">
         <NavigationBar/>
-        <h1 className="text-3xl font-bold mb-8">All Mentors</h1>
+        <h1 className="text-3xl font-bold mb-8">All</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {data.allOppositeUsers.map((item) => (
