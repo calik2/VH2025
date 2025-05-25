@@ -87,7 +87,7 @@ export default function PreferencesStep() {
           How important is it to you that you and your match share similar values?
         </label>
         <div className="flex text-s mt-4">
-          <span>Important</span>
+          <span>Don't Care!</span>
           <div className='flex-1 mx-4 mt-2'>
               <Slider
               min={0}
@@ -97,7 +97,7 @@ export default function PreferencesStep() {
               onValueChange={setValues}
               />
           </div>
-        <span>Don't Care!</span>
+        <span>Important</span>
         </div>
       </div>
 
