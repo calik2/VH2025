@@ -42,7 +42,7 @@ export default function PreferencesStep() {
       {/* Advice Question */}
       <div> 
         <label htmlFor="advice" className="block text-med font-medium mb-1">
-          What kind of advice are you looking for?
+          What kind of advice are you hoping to exchange?
         </label>
         <div className="flex text-s mt-4">
           <span>Career</span>
