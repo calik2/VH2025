@@ -10,15 +10,29 @@ import {RadioGroup, RadioGroupItem} from '@/components/ui/radio-group';
 export default function PreferencesStep() {
   const router = useRouter();
 
-  const [advice, setAdvice] = useState([0]);
+  const [adviceType, setAdvice] = useState([0]);
   const [connection, setConnection] = useState("");
-  const [values, setValues] = useState([0]);
+  const [valueWeight, setValues] = useState([0]);
 
   const handleSubmit = (e: React.FormEvent) => { // when next button is pressed
     e.preventDefault();
 
     // TODO FOR BACKEND: STORE DATA SOMEWEHRE
-    console.log({ advice, connection, values });
+    const existingData = JSON.parse(localStorage.getItem('onboardingData') || '{}');
+    const student = connection == "student";
+    const updatedData = {
+      ...existingData,
+      Preferences: {
+        ...(existingData.Preferences || {}),
+        adviceType: adviceType[0],
+        student: student ?? false,
+        valueWeight: valueWeight[0],
+      },
+    };
+  
+    localStorage.setItem('onboardingData', JSON.stringify(updatedData));
+
+    console.log({ adviceType, connection, valueWeight });
 
     router.push('/onboarding/communication');
   };
@@ -37,7 +51,7 @@ export default function PreferencesStep() {
               min={0}
               max={5}
               step={1}
-              value={advice}
+              value={adviceType}
               onValueChange={setAdvice}
               />
           </div>
@@ -79,7 +93,7 @@ export default function PreferencesStep() {
               min={0}
               max={5}
               step={1}
-              value={values}
+              value={valueWeight}
               onValueChange={setValues}
               />
           </div>

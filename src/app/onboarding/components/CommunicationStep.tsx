@@ -7,19 +7,55 @@ import {Slider} from '@/components/ui/slider';
 import { Label } from "@/components/ui/label"
 import {RadioGroup, RadioGroupItem} from '@/components/ui/radio-group';
 
+
 export default function CommunicationStep() {
   const router = useRouter();
 
-  const [engaged, setEngage] = useState([0]);
-  const [comPref, setCom] = useState([0]);
+  const [engagement, setEngage] = useState([0]);
+  const [communicationStyle, setCom] = useState([0]);
 
-  const handleSubmit = (e: React.FormEvent) => { // when next button is pressed
+  const handleSubmit = async(e: React.FormEvent) => { // when next button is pressed
     e.preventDefault();
 
     // TODO FOR BACKEND: STORE DATA SOMEWEHRE
-    console.log({ engaged, comPref });
 
-    router.push('/home');
+    const existingData = JSON.parse(localStorage.getItem('onboardingData') || '{}');
+    
+    const updatedData = {
+      ...existingData,
+      Preferences: {
+        ...(existingData.Preferences || {}),
+        engagement: engagement[0],
+        communicationStyle: communicationStyle[0],
+      },
+    };
+  
+    localStorage.setItem('onboardingData', JSON.stringify(updatedData));
+    const onboardingData = JSON.parse(localStorage.getItem('onboardingData') || '{}');
+    
+    try {
+      const USER_UID = localStorage.getItem('USER_UID')?.toString();
+
+      if (!USER_UID) {
+        console.error("USER_UID not found in localStorage");
+        return;
+      }
+
+      await fetch(`/api/addUser?USER_UID=${encodeURIComponent(USER_UID)}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(onboardingData),
+      });
+
+      localStorage.removeItem("onboardingData");
+
+      console.log({ engagement, communicationStyle });
+
+      router.push('/home');
+    }
+    catch (error) {
+      console.error('Sign up error:', error);
+    }
   };
 
   return (
@@ -36,7 +72,7 @@ export default function CommunicationStep() {
               min={0}
               max={5}
               step={1}
-              value={engaged}
+              value={engagement}
               onValueChange={setEngage}
               />
           </div>
@@ -56,7 +92,7 @@ export default function CommunicationStep() {
               min={0}
               max={5}
               step={1}
-              value={comPref}
+              value={communicationStyle}
               onValueChange={setCom}
               />
           </div>
