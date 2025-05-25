@@ -6,6 +6,8 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link'
 import { Icons } from '@/components/icons';
 import { Button } from '@/components/ui/button';
+import Logo from '@/logo/mentHER_logo.png'; // Adjust the path as necessary
+import Image from 'next/image';
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -62,10 +64,8 @@ export default function LoginPage() {
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
       <div className="w-full max-w-md space-y-8 bg-white p-8 rounded-lg shadow-md">
         <div className="flex flex-col items-center">
-          <h1>INSERT LOGO</h1>
-          <h2 className="text-2xl text-center font-extrabold text-green-800">INSERT WELCOME MESSAGE</h2>
-          {/* <Image src="/images/zotbins_updated.png" alt="ZotBins Logo" width={60} height={60} className="mb-4" /> */}
-          {/* <h2 className="text-2xl text-center font-extrabold text-green-800">Welcome to ZotBin's Database Visualizer</h2> */}
+          <Image src={ Logo } alt="mentHER Logo" width={150} height={150} className="mb-4" />
+          <h2 className="text-2xl text-center font-extrabold" style={{ color: '#4f364b' }}>WELCOME!</h2>
           <p className="mt-2 text-sm text-gray-600">Please sign up to continue</p>
         </div>
 
@@ -82,7 +82,11 @@ export default function LoginPage() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
+                style={{
+                outlineColor: '#4f364b', // focus ring color
+                borderColor: '#4f364b'
+                }}
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none"
               />
             </div>
             <div>
@@ -96,7 +100,11 @@ export default function LoginPage() {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
+                style={{
+                outlineColor: '#4f364b', // focus ring color
+                borderColor: '#4f364b'
+                }}
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none"
               />
             </div>
           </div>
@@ -105,7 +113,8 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 disabled:opacity-50"
+              style={{ backgroundColor: '#4f364b' }}
+              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50"
             >
               {isLoading ? (
                 <Icons.spinner className="h-5 w-5 animate-spin" />

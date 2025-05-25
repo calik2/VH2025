@@ -57,7 +57,6 @@ export default function LoginPage() {
         <div className="flex flex-col items-center">
           <Image src={ Logo } alt="mentHER Logo" width={150} height={150} className="mb-4" />
           <h2 className="text-2xl text-center font-extrabold" style={{ color: '#4f364b' }}>WELCOME!</h2>
-          {/* <h2 className="text-2xl text-center font-extrabold text-green-800">Welcome to ZotBin's Database Visualizer</h2> */}
           <p className="mt-2 text-sm text-gray-600">Please sign in to continue</p>
         </div>
 
