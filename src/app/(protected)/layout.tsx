@@ -3,7 +3,6 @@
 import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
-import Image from "next/image";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/app-sidebar"
 
@@ -44,11 +43,3 @@ export default function ProtectedLayout({
     </>
   );
 } 
-
-
-
-// export default function Layout({ children }: { children: React.ReactNode }) {
-//   return (
-    
-//   )
-// }

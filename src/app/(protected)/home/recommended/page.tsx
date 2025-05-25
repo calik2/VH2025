@@ -1,15 +1,11 @@
-import Link from "next/link"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Heart, Home } from "lucide-react"
+import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import { NavigationBar } from "@/components/app-navbar"
 import { cookies } from 'next/headers';
-import { collection, doc, getDoc, query, where, getDocs } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../../../../backend/firebaseConfig";
 import { Badge } from "@/components/ui/badge"
 import { ExternalLink } from "lucide-react"
-import Image from "next/image"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 
