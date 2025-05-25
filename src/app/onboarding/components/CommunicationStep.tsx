@@ -52,7 +52,7 @@ export default function CommunicationStep() {
 
       console.log({ engagement, communicationStyle });
 
-      router.push('/home');
+      router.push('/home/recommended');
     }
     catch (error) {
       console.error('Sign up error:', error);
