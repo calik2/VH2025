@@ -135,7 +135,7 @@ export default function LoginPage() {
           </button> */}
 
           <p>Don't have an account?</p>
-          <Button><Link href="/signup">Create one here</Link></Button>
+          <Button style={{backgroundColor: '#4f364b'}}><Link href="/signup">Create one here</Link></Button>
         </form>
       </div>
     </div>
