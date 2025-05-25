@@ -119,7 +119,7 @@ export default function ProfileCard() {
     <Card className="justify-center w-full items-center">
       <CardHeader className="flex flex-col items-center space-y-4 pb-6">
         <Avatar className="h-56 w-56">
-          <AvatarImage src={profile.avatar || "/placeholder.svg"} alt="Profile" />
+          <AvatarImage src={profile.avatar || "/file.svg"} alt="Profile" />
           <AvatarFallback className="text-3xl">{getInitials(profile.name)}</AvatarFallback>
         </Avatar>
         <div className="text-center space-y-1">

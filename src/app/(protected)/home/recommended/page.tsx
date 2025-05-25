@@ -39,13 +39,13 @@ function MentorCard({ user }: MentorCardProps) {
     .filter((hobby) => hobby.length > 0)
 
   return (
-    <Card className="w-full max-w-sm mx-auto">
+    <Card className="w-full h-full flex flex-col">
       <CardHeader className="text-center pb-4">
         <a
           href={user.LinkedIn}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 text-lg font-semibold text-blue-600 hover:text-blue-800 transition-colors"
+          className="inline-flex items-center text-lg font-semibold text-blue-600 hover:text-blue-800 transition-colors"
         >
           {user.Name}
           <ExternalLink className="h-4 w-4" />
@@ -111,12 +111,15 @@ export default async function Recommended() {
   const data: ReccomendedMentors = await res.json();
   console.log(data)
   return (
-    <div className="container mx-auto py-10 px-4 flex flex-col items-center">
-        <NavigationBar/>
-      <h1 className="text-3xl font-bold mb-8">Reccomended Mentors</h1>
+    <>
+    {/* <div className="fixed top-5 z-50"><NavigationBar /></div> */}
+      {/* push page content down so it doesn’t live under the bar */}
+      <div className="container mx-auto py-10 px-4 flex flex-col items-center">
+      <NavigationBar />
+        <h1 className="text-3xl font-bold mb-10">Recommended Mentors</h1>
     
-      <Carousel className="w-full">
-        <CarouselContent>
+      <Carousel className="w-full h-full flex flex-col">
+        <CarouselContent className="h-[800px]">
           {
             data.allOppositeUsers.map((mentor) => (
               <CarouselItem key={mentor.id} className="md:basis-2/3 lg:basis-1/2">
@@ -136,6 +139,8 @@ export default async function Recommended() {
         </CarouselNext>
       </Carousel>
     </div>
+    </>
+    
   )
 }
 
