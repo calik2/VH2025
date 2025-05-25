@@ -54,7 +54,7 @@ export default function LoginPage() {
       <div className="w-full max-w-md space-y-8 bg-white p-8 rounded-lg shadow-md">
         <div className="flex flex-col items-center">
           <h1>INSERT LOGO</h1>
-          <h2 className="text-2xl text-center font-extrabold text-green-800">INSERT WELCOME MESSAGE</h2>
+          <h2 className="text-2xl text-center font-extrabold" style={{ color: 'hsl(var(--primary))' }}>INSERT WELCOME MESSAGE</h2>
           {/* <Image src="/images/zotbins_updated.png" alt="ZotBins Logo" width={60} height={60} className="mb-4" /> */}
           {/* <h2 className="text-2xl text-center font-extrabold text-green-800">Welcome to ZotBin's Database Visualizer</h2> */}
           <p className="mt-2 text-sm text-gray-600">Please sign in to continue</p>
