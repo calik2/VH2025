@@ -24,13 +24,24 @@ export default function PersonalStep() {
 
   const router = useRouter();
 
-  const [hobbies, setHobbies] = useState('');
+  const [Hobbies, setHobbies] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => { // when next button is pressed
     e.preventDefault();
 
     // TODO FOR BACKEND: STORE DATA 
-    console.log({ hobbies, values: selected.join(', ')});
+
+    const existingData = JSON.parse(localStorage.getItem('onboardingData') || '{}');
+    
+    const updatedData = {
+      ...existingData,
+      Hobbies,
+      Values: selected, // store as an array
+    };
+  
+    localStorage.setItem('onboardingData', JSON.stringify(updatedData));
+
+    console.log({ Hobbies, Values: selected.join(', ')});
 
     router.push('/onboarding/preferences');
   };
@@ -47,7 +58,7 @@ export default function PersonalStep() {
           id="hobbies"
           placeholder="thrifting, powerlifting, F1"
           type="text"
-          value={hobbies}
+          value={Hobbies}
           onChange={(e) => setHobbies(e.target.value)}
           required
         />

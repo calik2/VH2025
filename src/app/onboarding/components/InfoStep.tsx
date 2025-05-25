@@ -4,19 +4,35 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { Label } from "@/components/ui/label"
+import {RadioGroup, RadioGroupItem} from '@/components/ui/radio-group';
 
 export default function InfoStep() {
   const router = useRouter();
 
-  const [name, setName] = useState('');
-  const [linkedin, setLinkedin] = useState('');
+  const [Name, setName] = useState('');
+  const [LinkedIn, setLinkedin] = useState('');
   const [photo, setPhoto] = useState<File | null>(null);
+  const [mentor, setMentor] = useState("");
+  const [isAStudent, setStudent] = useState("");
+
 
   const handleSubmit = (e: React.FormEvent) => { // when next button is pressed
     e.preventDefault();
 
     // TODO FOR BACKEND: STORE DATA SOMEWEHRE
-    console.log({ name, linkedin, photo });
+    const isMentor = mentor == "mentor"
+    const isStudent = isAStudent == "student"
+    const onboardingData = {
+      isMentor: isMentor ?? false, // ensure boolean
+      isStudent: isStudent ?? false,
+      Name,
+      LinkedIn,
+      // optionally: add photo.name or type here, not full file
+    };
+    localStorage.setItem('onboardingData', JSON.stringify(onboardingData));
+    
+    console.log({ Name, LinkedIn, mentor, isAStudent, photo });
 
     router.push('/onboarding/personal');
   };
@@ -32,10 +48,51 @@ export default function InfoStep() {
           id="name"
           placeholder="Name"
           type="text"
-          value={name}
+          value={Name}
           onChange={(e) => setName(e.target.value)}
           required
         />
+      </div>
+
+      {/* Mentor Question */}
+      <div>
+        <label htmlFor="setMentor" className="block text-med font-medium mb-1">
+          Are you a mentor or mentee?
+        </label>
+        <div className="flex justify-center text-med mt-4">
+          <RadioGroup defaultValue="mentor" onValueChange={setMentor}>
+            <div className='flex items-center space-x-2 gap-12'>
+              <div className='justify-center space-x-2'>
+              <RadioGroupItem value="mentor" id="r1" />
+              <Label htmlFor="r1">Mentor</Label>
+              </div>
+              <div className='justify-center space-x-2'>
+              <RadioGroupItem value="mentee" id="r2" />
+              <Label htmlFor="r2">Mentee</Label>
+              </div>
+            </div>
+          </RadioGroup>
+        </div>
+      </div>
+      <div>
+        <label htmlFor="setStudent" className="block text-med font-medium mb-1">
+          Are you a student or industry professional?
+        </label>
+        <div className="flex justify-center text-med mt-4">
+          <RadioGroup defaultValue="student" onValueChange={setStudent}>
+            <div className='flex items-center space-x-2 gap-12'>
+              <div className='justify-center space-x-2'>
+              <RadioGroupItem value="mentor" id="r1" />
+              <Label htmlFor="r1">Student</Label>
+              </div>
+              <div className='justify-center space-x-2'>
+              <RadioGroupItem value="mentee" id="r2" />
+              <Label htmlFor="r2">Industry Professional</Label>
+              </div>
+            </div>
+          </RadioGroup>
+        </div>
+        
       </div>
 
       {/* LinkedIn Question */}
@@ -47,7 +104,7 @@ export default function InfoStep() {
           id="linkedin"
           placeholder='https://www.linkedin.com/in/...'
           type="url"
-          value={linkedin}
+          value={LinkedIn}
           onChange={(e) => setLinkedin(e.target.value)}
           
         />

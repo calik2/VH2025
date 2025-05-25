@@ -21,6 +21,8 @@ export default function LoginPage() {
     try {
       const userCredential = await signup(email, password);
       const uid = userCredential.uid;
+      localStorage.setItem('USER_UID', uid);
+
       const response = await fetch("/api/signUp", {
         method: "POST",
         headers: {
