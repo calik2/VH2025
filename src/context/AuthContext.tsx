@@ -12,7 +12,7 @@ import {
   sendPasswordResetEmail,
   User
 } from "firebase/auth";
-import { app } from "../config/firebaseConfig";
+import { app } from "../../backend/firebaseConfig";
 
 interface AuthContextType {
   user: User | null;

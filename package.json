@@ -9,33 +9,25 @@
     "lint": "next lint"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "firebase": "^11.8.1"
-=======
-    "@radix-ui/react-label": "^2.1.7",
     "@radix-ui/react-dialog": "^1.1.14",
-    "@radix-ui/react-navigation-menu": "^1.2.13",
+    "@radix-ui/react-icons": "^1.3.2",
+    "@radix-ui/react-label": "^2.1.7",
+    "@radix-ui/react-popover": "^1.1.14",
     "@radix-ui/react-progress": "^1.1.7",
     "@radix-ui/react-radio-group": "^1.3.7",
-    "@radix-ui/react-slider": "^1.3.5",
     "@radix-ui/react-separator": "^1.1.7",
+    "@radix-ui/react-slider": "^1.3.5",
     "@radix-ui/react-slot": "^1.2.3",
     "@radix-ui/react-tooltip": "^1.2.7",
     "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
     "firebase": "^11.8.1",
     "lucide-react": "^0.511.0",
-    "next": "15.1.8",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
     "tailwind-merge": "^3.3.0",
     "tailwindcss-animate": "^1.0.7"
->>>>>>> b037c3fc43d8875e2dc8afcefefc4602b0e990e3
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@types/node": "^20",
-<<<<<<< HEAD
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
@@ -44,13 +36,6 @@
     "postcss": "^8",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-=======
-    "@types/react": "^19.1.5",
-    "@types/react-dom": "^19.1.5",
-    "eslint": "^9",
-    "eslint-config-next": "15.1.8",
-    "postcss": "^8",
->>>>>>> b037c3fc43d8875e2dc8afcefefc4602b0e990e3
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
