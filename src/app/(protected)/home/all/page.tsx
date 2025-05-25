@@ -160,13 +160,13 @@ function MentorCard({ user }: MentorCardProps) {
     .filter((hobby) => hobby.length > 0)
 
   return (
-    <Card className="w-full max-w-sm mx-auto">
+    <Card className="w-full max-w-sm mx-auto h-[100%] flex flex-col justify-between">
       <CardHeader className="text-center pb-4">
         <a
           href={user.LinkedIn}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 text-lg font-semibold text-blue-600 hover:text-blue-800 transition-colors"
+          className="inline-flex items-center gap-2 text-lg font-semibold text-[#5A465A] hover:text-[#CABAD7] transition-colors"
         >
           {user.Name}
           <ExternalLink className="h-4 w-4" />
@@ -234,7 +234,7 @@ export default async function Recommended() {
     return (
         <div className="container mx-auto py-10 px-4 flex flex-col items-center">
         <NavigationBar/>
-        <h1 className="text-3xl font-bold mb-8">All Mentors</h1>
+        <h1 className="text-3xl font-bold mb-8 text-[#4F364B]">All Mentors</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {data.allOppositeUsers.map((item) => (
