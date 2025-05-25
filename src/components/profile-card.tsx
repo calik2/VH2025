@@ -143,7 +143,7 @@ export default function ProfileCard() {
             href={profile.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-600 hover:underline"
+            className="text-[#47564F] hover:underline"
           >
             {profile.linkedin}
           </a>
@@ -158,7 +158,7 @@ export default function ProfileCard() {
     </Label>
     <div className="flex flex-wrap gap-2">
       {hobbyList.map((hobby, idx) => (
-        <Badge key={idx} variant="secondary" className="text-sm text-white bg-[#4F364B]">
+        <Badge key={idx} className="text-sm text-white bg-[#47564F]">
           {hobby}
         </Badge>
       ))}
