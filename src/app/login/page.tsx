@@ -35,7 +35,7 @@ export default function LoginPage() {
       }
 
       console.log("User ID from Firestore:", data.userId);  
-            router.push('/dashboard');
+            router.push('/home/recommended');
           } catch (error) {
             console.error('Login error:', error);
           } finally {
