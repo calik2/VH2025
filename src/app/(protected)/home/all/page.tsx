@@ -51,7 +51,7 @@ function MentorCard({ user }: MentorCardProps) {
           href={user.LinkedIn}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 text-lg font-semibold text-[#5A465A] hover:text-[#CABAD7] transition-colors"
+          className="inline-flex items-center gap-2 text-lg font-semibold text-[#4F364B] hover:text-[#CABAD7] transition-colors"
         >
           {user.Name}
           <ExternalLink className="h-4 w-4" />
@@ -77,7 +77,7 @@ function MentorCard({ user }: MentorCardProps) {
           <h4 className="text-sm font-medium text-gray-700">Values</h4>
           <div className="flex flex-wrap gap-2">
             {user.Values.map((value, index) => (
-              <Badge key={index} variant="secondary" className="text-xs">
+              <Badge key={index} className="text-xs bg-[#47564F] text-white">
                 {value}
               </Badge>
             ))}
@@ -89,7 +89,7 @@ function MentorCard({ user }: MentorCardProps) {
           <h4 className="text-sm font-medium text-gray-700">Hobbies</h4>
           <div className="flex flex-wrap gap-2">
             {hobbiesArray.map((hobby, index) => (
-              <Badge key={index} variant="outline" className="text-xs">
+              <Badge key={index} className="text-xs bg-[#47564F] text-white">
                 {hobby}
               </Badge>
             ))}

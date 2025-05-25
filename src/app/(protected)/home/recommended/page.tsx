@@ -7,8 +7,8 @@ import { db } from "../../../../../backend/firebaseConfig";
 import { Badge } from "@/components/ui/badge"
 import { ExternalLink } from "lucide-react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-
-
+import { Slider } from "@/components/ui/slider"
+import { Label } from "@/components/ui/label"
 
 type Mentor = {
   otherUser: {
@@ -18,6 +18,7 @@ type Mentor = {
         isStudent: boolean,
         Name: string;
         Values: [string];
+        Preferences: {pref1: number, pref2: number, pref3: number, pref4: number};
         isMentor: boolean;
         LinkedIn: string;
       };
@@ -53,10 +54,10 @@ function MentorCard({ user }: MentorCardProps) {
           href={user.otherUser.LinkedIn}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center text-lg font-semibold text-blue-600 hover:text-blue-800 transition-colors"
+          className="inline-flex items-center text-lg font-semibold text-[#4F364B] hover:text-[#5A465A] transition-colors"
         >
           {user.otherUser.Name}
-          <ExternalLink className="h-4 w-4" />
+          <ExternalLink className="h-4 w-4 " />
         </a>
         <div className="text-sm text-muted-foreground font-medium">
           {user.otherUser.isStudent ? "Student" : user.otherUser.isMentor ? "Mentor" : "User"}
@@ -79,7 +80,7 @@ function MentorCard({ user }: MentorCardProps) {
           <h4 className="text-sm font-medium text-gray-700">Values</h4>
           <div className="flex flex-wrap gap-2">
             {user.otherUser.Values.map((value, index) => (
-              <Badge key={index} variant="secondary" className="text-xs">
+              <Badge key={index} className="text-xs bg-[#47564F] text-white">
                 {value}
               </Badge>
             ))}
@@ -91,12 +92,33 @@ function MentorCard({ user }: MentorCardProps) {
           <h4 className="text-sm font-medium text-gray-700">Hobbies</h4>
           <div className="flex flex-wrap gap-2">
             {hobbiesArray.map((hobby, index) => (
-              <Badge key={index} variant="outline" className="text-xs">
+              <Badge key={index} className="text-xs bg-[#47564F] text-white">
                 {hobby}
               </Badge>
             ))}
           </div>
         </div>
+
+        {/* Preferences */}
+        <div className="space-y-2">
+          <h4 className="text-sm font-medium text-gray-700">Preferences</h4>
+          <div className="flex flex-col gap-2">
+            {Object.entries(user.otherUser.Preferences).map(([key, value]) => (
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-gray-600"></span>
+                <Slider
+                  value={[value]}
+                  max={5}
+                  step={1}
+                  disabled
+                  className="w-full"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+
       </CardContent>
     </Card>
   )
@@ -121,10 +143,10 @@ export default async function Recommended() {
       {/* push page content down so it doesn’t live under the bar */}
       <div className="container mx-auto py-10 px-4 flex flex-col items-center">
       <NavigationBar />
-        <h1 className="text-3xl font-bold mb-10">Recommended</h1>
+        <h1 className="text-3xl font-bold mb-10 text-[#4F364B]">Recommended</h1>
     
       <Carousel className="w-full h-full flex flex-col">
-        <CarouselContent className="h-[85vh]">
+        <CarouselContent className="h-[95vh]">
           {
             data.scoredUsers.map((mentor) => (
               <CarouselItem key={mentor.otherUser.id} className="md:basis-2/3 lg:basis-1/2">
