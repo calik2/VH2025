@@ -39,7 +39,6 @@ function calculateScore(userData, otherUser) {
 
   const engagementScore = Math.abs(userData.Preferences.engagement - otherUser.Preferences.engagement) * 5;
 
-
   const communicationScore = Math.abs(userData.Preferences.communicationStyle - otherUser.Preferences.communicationStyle) * 5;
 
   let valueScore = 0;
