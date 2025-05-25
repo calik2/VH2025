@@ -26,7 +26,7 @@ const items = [
   },
   {
     title: "Logout",
-    url: "/dashboard",
+    url: "/logout",
     icon: LogOut,
   },
 ]
