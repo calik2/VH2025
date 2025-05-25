@@ -123,7 +123,7 @@ export default function ProfileCard() {
     <Card className="justify-center w-full items-center">
       <CardHeader className="flex flex-col items-center space-y-4 pb-6">
         <Avatar className="h-56 w-56">
-          <AvatarImage src={profile.avatar || "/file.svg"} alt="Profile" />
+          <AvatarImage src={profile.avatar || "/file.svg"} alt="Profile" className="h-full w-full object-cover"/>
           <AvatarFallback className="text-3xl">{getInitials(profile.name)}</AvatarFallback>
         </Avatar>
         <div className="text-center space-y-1">
@@ -221,8 +221,8 @@ export default function ProfileCard() {
             Your preferred communication style:
           </Label>
           <div className="flex items-center text-sm">
-            <span className="text-black mx-3.5">Hands-on</span>
-            <div className="flex-1 mx-4">
+            <span className="text-black mx-4.95">Hands-on</span>
+            <div className="flex-1 mx-6">
               <Slider min={0} max={5} step={1} value={[profile.pref3]} disabled /> {/* INSERT VALUE HERE */}
             </div>
             <span className="text-black mx-3">Chat</span>
@@ -233,11 +233,11 @@ export default function ProfileCard() {
             How engaged you are hoping to be in this program:
           </Label>
           <div className="flex items-center text-sm">
-            <span className="text-black mx-3.5">Very Casual</span>
-            <div className="flex-1 mx-4">
+            <span className="text-black mx-2.2">Very Casual</span>
+            <div className="flex-1 mx-3">
               <Slider min={0} max={5} step={1} value={[profile.pref4]} disabled /> {/* INSERT VALUE HERE */}
             </div>
-            <span className="text-black mx-3">Very Active</span>
+            <span className="text-black mx-0">Very Active</span>
           </div>
         </div>
       </CardContent>
