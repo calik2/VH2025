@@ -21,6 +21,8 @@ export default function LoginPage() {
     try {
       const userCredential = await login(email, password);
       const uid = userCredential.uid;
+      localStorage.setItem('USER_UID', uid);
+      console.log("STORED IDDDD");
       const response = await fetch(`/api/login?USER_UID=${uid}`);
       const data = await response.json();
 
