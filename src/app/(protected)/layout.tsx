@@ -42,7 +42,7 @@ export default function ProtectedLayout({
       </main>
       </SidebarProvider>
     </>
-  );
+  );  
 } 
 
 

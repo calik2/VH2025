@@ -107,6 +107,7 @@ export default async function Liked() {
     
   const res = await fetch(`http://localhost:3000/api/getLiked?USER_ID=${userId}`);
   const data: LikedMentors = await res.json();
+  
   console.log(data)
     return (
         <div className="container mx-auto py-10 px-4 flex flex-col items-center">
@@ -116,8 +117,9 @@ export default async function Liked() {
             {data.likedUsers.map((item) => (
                 <div className="p-2 h-full">
                   <MentorCard key={item.id} user={item} />
-                </div>
+                </div> 
             ))}
+          <div className="h-[30vh]"></div>
         </div>
         </div>
     )
