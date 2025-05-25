@@ -65,10 +65,10 @@ function MentorCard({ user }: MentorCardProps) {
           className="inline-flex items-center text-lg font-semibold text-[#4F364B] hover:text-[#5A465A] transition-colors"
         >
           {user.otherUser.Name}
-          <ExternalLink className="h-4 w-4 " />
+          <ExternalLink className="h-4 w-6 " />
         </a>
         <div className="text-sm text-muted-foreground font-medium">
-          {user.otherUser.isStudent ? "Student" : user.otherUser.isMentor ? "Mentor" : "User"}
+        {user.otherUser.isStudent && user.otherUser.isMentor ? "Student Mentor" : user.otherUser.isMentor ? "Industry Mentor" : "Mentee"}
         </div>
       </CardHeader>
 

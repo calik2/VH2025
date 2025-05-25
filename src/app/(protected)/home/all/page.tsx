@@ -58,7 +58,7 @@ function MentorCard({ user }: MentorCardProps) {
           <ExternalLink className="h-4 w-4" />
         </a>
         <div className="text-sm text-muted-foreground font-medium">
-          {user.isStudent ? "Student" : user.isMentor ? "Mentor" : "Mentee"}
+          {user.isStudent && user.isMentor ? "Student Mentor" : user.isMentor ? "Industry Mentor" : "Mentee"}
         </div>
       {/* </CardHeader> */}
 
