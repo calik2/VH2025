@@ -19,14 +19,23 @@ export default function LoginPage() {
     setIsLoading(true);
     
     try {
-      await login(email, password);
-      router.push('/dashboard');
-    } catch (error) {
-      console.error('Login error:', error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+      const userCredential = await login(email, password);
+      const uid = userCredential.uid;
+      const response = await fetch(`/api/login?USER_UID=${uid}`);
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Failed to log in");
+      }
+
+      console.log("User ID from Firestore:", data.userId);  
+            router.push('/dashboard');
+          } catch (error) {
+            console.error('Login error:', error);
+          } finally {
+            setIsLoading(false);
+          }
+        };
 
   const handleGoogleSignIn = async () => {
     setIsLoading(true);

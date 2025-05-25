@@ -19,7 +19,23 @@ export default function LoginPage() {
     setIsLoading(true);
     
     try {
-      await signup(email, password);
+      const userCredential = await signup(email, password);
+      const uid = userCredential.uid;
+      const response = await fetch("/api/signUp", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ uid }),
+      });
+  
+      const data = await response.json();
+  
+      if (!response.ok) {
+        throw new Error(data.message || "Failed to map UID");
+      }
+  
+      console.log("User mapped:", data.message);
       router.push('/onboarding/info');
     } catch (error) {
       console.error('Sign up error:', error);
