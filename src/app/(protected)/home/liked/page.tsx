@@ -61,7 +61,7 @@ function MentorCard({ user }: MentorCardProps) {
         <div className="flex justify-center">
           <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-gray-200">
           <Avatar className="h-24 w-24">
-          <AvatarImage src={user.photoURL || "/default.png"} alt="Profile" />
+          <AvatarImage src={user.photoURL || "/default.png"} alt="Profile" className="w-full h-full object-cover object-center"/>
           <AvatarFallback className="text-3xl">{getInitials(user.Name)}</AvatarFallback>
         </Avatar>
           </div>

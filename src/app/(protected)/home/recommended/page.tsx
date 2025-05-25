@@ -156,12 +156,12 @@ export default async function Recommended() {
     <>
     {/* <div className="fixed top-5 z-50"><NavigationBar /></div> */}
       {/* push page content down so it doesn’t live under the bar */}
-      <div className="container overflow-x-hidden mx-auto py-10 px-4 flex flex-col items-center">
+      <div className="w-[80vw] container overflow-x-hidden mx-auto py-10 px-4 flex flex-col items-center">
       <NavigationBar />
         <h1 className="text-3xl font-bold mb-10 text-[#4F364B]">Recommended</h1>
     
       <Carousel className="w-full h-full flex flex-col">
-        <CarouselContent className="w-[75vw] h-[80vh]">
+        <CarouselContent>
           {
             data.scoredUsers.map((mentor) => (
               <CarouselItem key={mentor.otherUser.id} className="md:basis-2/3 lg:basis-1/2">
