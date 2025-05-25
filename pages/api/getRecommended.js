@@ -21,7 +21,7 @@ export default async function handler(req, res) {
     const scoredUsers = []
     for(const otherUser of allOppositeUsers) {
        const score = calculateScore(userData, otherUser);
-        scoredUsers.push({ id: otherUser.id, score });
+        scoredUsers.push({ otherUser, score });
     }
     scoredUsers.sort((a, b) => b.score - a.score);
     
