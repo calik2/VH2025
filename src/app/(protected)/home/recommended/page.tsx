@@ -128,7 +128,7 @@ export default async function Recommended() {
         <h1 className="text-3xl font-bold mb-10">Recommended Mentors</h1>
     
       <Carousel className="w-full h-full flex flex-col">
-        <CarouselContent className="h-[500px]">
+        <CarouselContent className="h-[85vh]">
           {
             data.scoredUsers.map((mentor) => (
               <CarouselItem key={mentor.otherUser.id} className="md:basis-2/3 lg:basis-1/2">
