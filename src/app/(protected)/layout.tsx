@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/app-sidebar"
+import { NavigationBar } from "@/components/app-navbar"
 
 
 export default function ProtectedLayout({
@@ -34,12 +35,14 @@ export default function ProtectedLayout({
       <SidebarProvider>
         <AppSidebar />
         <main className="flex w-full items-center justify-center px-4">
-  <SidebarTrigger className="absolute top-4 left-4" />
-  <div className="w-full">
-    {children}
-  </div>
-</main>
+        <SidebarTrigger className="absolute top-4 left-4" />
+        <div className="w-full">
+          {children}
+        </div>
+      </main>
       </SidebarProvider>
     </>
   );
 } 
+
+

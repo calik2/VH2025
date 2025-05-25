@@ -52,7 +52,7 @@ function MentorCard({ user }: MentorCardProps) {
           href={user.LinkedIn}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 text-lg font-semibold text-[#4F364B] hover:text-[#CABAD7] transition-colors"
+          className="inline-flex mt-2 items-center gap-2 text-lg font-semibold text-[#4F364B] hover:text-[#CABAD7] transition-colors"
         >
           {user.Name}
           <ExternalLink className="h-4 w-4" />

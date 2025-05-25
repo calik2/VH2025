@@ -43,13 +43,13 @@ function MentorCard({ user }: MentorCardProps) {
     .filter((hobby) => hobby.length > 0)
 
   return (
-    <Card className="w-full max-w-sm mx-auto">
-      <CardHeader className="text-center pb-4">
+    <Card className="w-full max-w-sm mx-auto h-[100%] flex flex-col justify-between">
+            <CardContent className="space-y-4">
         <a
           href={user.LinkedIn}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 text-lg font-semibold text-blue-600 hover:text-blue-800 transition-colors"
+          className="inline-flex mt-2 items-center gap-2 text-lg font-semibold font-semibold text-[#4F364B] hover:text-[#CABAD7] transition-colors"
         >
           {user.Name}
           <ExternalLink className="h-4 w-4" />
@@ -57,14 +57,11 @@ function MentorCard({ user }: MentorCardProps) {
         <div className="text-sm text-muted-foreground font-medium">
           {user.isStudent ? "Student" : user.isMentor ? "Mentor" : "User"}
         </div>
-      </CardHeader>
-
-      <CardContent className="space-y-4">
         {/* Profile Picture */}
         <div className="flex justify-center">
           <div className="relative w-24 h-24 rounded-full overflow-hidden border-2 border-gray-200">
           <Avatar className="h-24 w-24">
-          <AvatarImage src={user.photoURL || "/file.svg"} alt="Profile" />
+          <AvatarImage src={user.photoURL || "/default.png"} alt="Profile" />
           <AvatarFallback className="text-3xl">{getInitials(user.Name)}</AvatarFallback>
         </Avatar>
           </div>
