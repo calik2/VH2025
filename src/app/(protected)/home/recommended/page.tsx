@@ -41,6 +41,14 @@ const getInitials = (name?: string) => {
     .toUpperCase()
 }
 
+
+const preferenceLabels: Record<string, string> = {
+  adviceType: "Type of Advice  (Career --> Social)",
+  valueWeight: "Importance of Values   (Don't Care --> Important)",
+  communicationStyle: "Communication Style   (Hands-on --> Casual Check-ins)",
+  engagement: "Engagement Level   (Very Casual --> Very Active)",
+};
+
 function MentorCard({ user }: MentorCardProps) {
   // Split hobbies by comma and trim whitespace
   const hobbiesArray = user.otherUser.Hobbies.split(",")
@@ -98,26 +106,33 @@ function MentorCard({ user }: MentorCardProps) {
             ))}
           </div>
         </div>
+        
 
         {/* Preferences */}
         <div className="space-y-2">
           <h4 className="text-sm font-medium text-gray-700">Preferences</h4>
-          <div className="flex flex-col gap-2">
-            {Object.entries(user.otherUser.Preferences).map(([key, value]) => (
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-600"></span>
-                <Slider
-                  value={[value]}
-                  max={5}
-                  step={1}
-                  disabled
-                  className="w-full"
-                />
+            <div className="flex flex-col gap-4">
+            {["adviceType", "valueWeight", "communicationStyle", "engagement"].map((key) => {
+            const value = user.otherUser.Preferences[key as keyof typeof user.otherUser.Preferences];
+            return (
+              <div key={key}>
+                <div className="text-xs font-semibold text-gray-700 mb-3">
+                  {preferenceLabels[key] || key}
+                </div>
+                <div className="flex items-center justify-between">
+                  <Slider
+                    value={[value]}
+                    max={5}
+                    step={1}
+                    disabled
+                    className="w-full [&_[role=slider]]:bg-[#4F364B]"
+                  />
+                </div>
               </div>
-            ))}
+            );
+          })}
           </div>
-        </div>
-
+          </div>
 
       </CardContent>
     </Card>
