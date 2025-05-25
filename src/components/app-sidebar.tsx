@@ -39,24 +39,29 @@ const items = [
 export function AppSidebar() {
   return (
     <Sidebar>
-      <SidebarContent>
+<SidebarContent className="bg-[#4F364B] text-white h-full">
         <SidebarGroup>
         <SidebarGroupLabel asChild>
-          <div className="flex items-center mt-4 mb-4 gap-2">
-            <Image src="/logo/mentHer_logo.png" alt="MentHer Logo" width={200} height={24} />
-          </div>
-        </SidebarGroupLabel>
+  <div className="flex flex-col items-center pl-2 mt-2 mb-10 gap-2 w-full px-4">
+    <Image src="/logo/mentHERWhite.png" alt="MentHer Logo" width={200} height={24} />
+    <hr className="border-t border-white w-full opacity-100" />
+  </div>
+</SidebarGroupLabel>
+
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <a href={item.url}>
-                      <item.icon />
-                      <span>{item.title}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                <a href={item.url}
+                  className="flex items-center gap-3 text-lg pl-6 w-full py-3 rounded-md transition-colors duration-200 hover:bg-[#5A465A] hover:text-white"
+                >
+                  <item.icon size={24} />
+                  <span className="text-lg font-medium">{item.title}</span>
+                </a>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              
               ))}
             </SidebarMenu>
           </SidebarGroupContent>

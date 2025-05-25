@@ -18,8 +18,10 @@ interface ProfileData {
   hobbies: string
   liked: string[]         // your “Liked” array
   values: string[]        // your “Values” array
-  pref1: number           // adviceType
-  pref2: number           // engagement
+  pref1: number           // valueWeight
+  pref2: number           // adviceTyoe
+  pref3: number           // communicationStyle
+  pref4: number           // engagement
   isMentor: boolean
   isStudent: boolean
 }
@@ -77,8 +79,10 @@ export default function ProfileCard() {
           hobbies:     Hobbies || [],        // if that’s a string, rename your JSX too
           liked:       Liked  || [],
           values:      valuesArr,
-          pref1:       Preferences.adviceType,
-          pref2:       Preferences.engagement,
+          pref1:       Preferences.valueWeight,
+          pref2:       Preferences.adviceType,
+          pref3:       Preferences.communicationStyle,
+          pref4:       Preferences.engagement,
           isMentor:    isMentor,
           isStudent:   isStudent,
           avatar:      photoURL || "",
@@ -210,6 +214,30 @@ export default function ProfileCard() {
               <Slider min={0} max={5} step={1} value={[profile.pref2]} disabled /> {/* INSERT VALUE HERE */}
             </div>
             <span className="text-black mx-3">Social</span>
+          </div>
+        </div>
+        <div className="px-20 justify-center">
+          <Label className="text-sm font-medium mb-2 block">
+            Your preferred communication style:
+          </Label>
+          <div className="flex items-center text-sm">
+            <span className="text-black mx-3.5">Hands-on</span>
+            <div className="flex-1 mx-4">
+              <Slider min={0} max={5} step={1} value={[profile.pref3]} disabled /> {/* INSERT VALUE HERE */}
+            </div>
+            <span className="text-black mx-3">Chat</span>
+          </div>
+        </div>
+        <div className="px-20 justify-center">
+          <Label className="text-sm font-medium mb-2 block">
+            How engaged you are hoping to be in this program:
+          </Label>
+          <div className="flex items-center text-sm">
+            <span className="text-black mx-3.5">Very Casual</span>
+            <div className="flex-1 mx-4">
+              <Slider min={0} max={5} step={1} value={[profile.pref4]} disabled /> {/* INSERT VALUE HERE */}
+            </div>
+            <span className="text-black mx-3">Very Active</span>
           </div>
         </div>
       </CardContent>
