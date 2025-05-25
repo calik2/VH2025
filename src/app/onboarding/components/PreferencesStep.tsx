@@ -11,7 +11,7 @@ export default function PreferencesStep() {
   const router = useRouter();
 
   const [adviceType, setAdvice] = useState([0]);
-  const [connection, setConnection] = useState("");
+  const [connection, setConnection] = useState("student");
   const [valueWeight, setValues] = useState([0]);
 
   const handleSubmit = (e: React.FormEvent) => { // when next button is pressed
@@ -19,13 +19,13 @@ export default function PreferencesStep() {
 
     // TODO FOR BACKEND: STORE DATA SOMEWEHRE
     const existingData = JSON.parse(localStorage.getItem('onboardingData') || '{}');
-    const student = connection == "student";
+    const student = connection === "student";
     const updatedData = {
       ...existingData,
       Preferences: {
         ...(existingData.Preferences || {}),
         adviceType: adviceType[0],
-        student: student ?? false,
+        student: student,
         valueWeight: valueWeight[0],
       },
     };

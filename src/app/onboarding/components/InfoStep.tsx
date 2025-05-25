@@ -13,19 +13,19 @@ export default function InfoStep() {
   const [Name, setName] = useState('');
   const [LinkedIn, setLinkedin] = useState('');
   const [photo, setPhoto] = useState<File | null>(null);
-  const [mentor, setMentor] = useState("");
-  const [isAStudent, setStudent] = useState("");
+  const [mentor, setMentor] = useState("mentor");
+  const [isAStudent, setStudent] = useState("student");
 
 
   const handleSubmit = (e: React.FormEvent) => { // when next button is pressed
     e.preventDefault();
 
     // TODO FOR BACKEND: STORE DATA SOMEWEHRE
-    const isMentor = mentor == "mentor"
-    const isStudent = isAStudent == "student"
+    const isMentor = mentor === "mentor"
+    const isStudent = isAStudent === "student"
     const onboardingData = {
-      isMentor: isMentor ?? false, // ensure boolean
-      isStudent: isStudent ?? false,
+      isMentor: isMentor,
+      isStudent: isStudent,
       Name,
       LinkedIn,
       // optionally: add photo.name or type here, not full file
@@ -82,11 +82,11 @@ export default function InfoStep() {
           <RadioGroup defaultValue="student" onValueChange={setStudent}>
             <div className='flex items-center space-x-2 gap-12'>
               <div className='justify-center space-x-2'>
-              <RadioGroupItem value="mentor" id="r1" />
+              <RadioGroupItem value="student" id="r1" />
               <Label htmlFor="r1">Student</Label>
               </div>
               <div className='justify-center space-x-2'>
-              <RadioGroupItem value="mentee" id="r2" />
+              <RadioGroupItem value="industry" id="r2" />
               <Label htmlFor="r2">Industry Professional</Label>
               </div>
             </div>
