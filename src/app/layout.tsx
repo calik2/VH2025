@@ -3,8 +3,8 @@ import "./globals.css";
 import { AuthProvider } from "@/context/AuthContext";
 
 export const metadata: Metadata = {
-  title: "ZotBins Database Visualizer",
-  description: "A powerful visualization tool for ZotBins data",
+  title: "mentHER",
+  description: "Empowering the next generation of women in tech through mentorship, connection, and community",
 };
 
 export default function RootLayout({
