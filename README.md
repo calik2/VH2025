@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# mentHER
+Empowering women in tech through smarter mentorship connections—because breaking into CS shouldn’t be done alone.
 
-## Getting Started
+## Inspiration
+Our entire team is a part of UC Irvine’s Women in Information and Computer Sciences (WICS) club mentorship program. Mentorship has made such a large impact on each of our academic, social, and professional careers so we wanted to build a platform that would enable a larger mentorship network. WICS mentorship requires a lot of manual work from our mentorship lead, so we wanted to create an app that would simplify a lot of their work. 
 
-First, run the development server:
+Here’s a little snippet of our personal experiences in mentorship!
+* _Cali:_ I came into college without any computer science background, so navigating freshman year was very difficult simply because I didn’t know what I needed to do. Mentorship provided me with the guidance that I needed to be successful in my coursework and career. My mentor gave me advice on things like classes and navigating internships.
+* _Mikayla:_  I wouldn’t be where I am without the mentors I met during my first year at UCI. They supported me socially, academically, and professionally. Whether it was encouraging me to stick with tough classes, apply for internships even when I didn’t feel ready, or take on leadership roles in clubs, their advice really shaped the path I’m on. The mentors I have been lucky enough to be surrounded by pushed me to take chances I might never have on my own, and those moments changed everything. So much of my biggest wins and achievements in college can be tied back to my mentors' unwavering encouragement and support.
+* _Emily:_ Joining WICS this year and having the opportunity to be involved in such a vibrant community as well as connect with other women in the industry, as mentors, peers, and friends has made me realize how important it is to have a support system. Without the mentorship of WICS, I never would have applied to or heard of the Grace Hopper Conference, Pinterest Development Program, or any hackathons. Being surrounded by other women in the industry who have the shared passion of building a safe space for women has empowered me to seek out opportunities in my career and personal life, be confident in my abilities, and to explore new possibilities.
+* _Rhea:_ Through WICS, I found a community that helped me grow not only in my career, but also as a person. I’ve become more confident in myself because it’s incredibly inspiring and comforting to see so many women achieve the goals that seemed impossible at one point. I also value the importance of passing that encouragement on to others. The advice I share with my mentees today is the same guidance my mentors gave me when I was a mentee, and through my experience with mentorship, I believe that continuing to share this support is essential to empowering more women to pursue careers in tech.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+When women in tech don’t have access to mentors during undergrad, it becomes much harder to navigate classes, career paths, and the recruiting process, especially in fields where they’re already underrepresented. Without guidance from those who’ve been through it, many talented students miss out on opportunities or begin to doubt their place in tech. That’s where mentHER comes in.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## What it does
+mentHER connects mentees and mentors through a smart recommendation system based on shared goals, interests, and preferences collected at sign-up. It helps automate the matching process to create more meaningful mentorship connections. Users are provided with their top 5 most compatable matches, but are also able to see the other users who they could reach out to as well. 
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## How we built it
+We built mentHER using Next.js and Tailwind CSS for the front end, and Firebase for our backend and database needs. We began by discussing the overall scope of the project, outlining key requirements, user flows, and initial design ideas to ensure everyone was aligned. From there, we created low-fidelity wireframes to visualize the user experience before diving into development. To streamline our work, we divided the project into three main areas: Frontend, Authentication, and API. Emily and Rhea focused on building the API, handling tasks such as creating endpoints, managing data flow between the front and back end, and ensuring efficient communication with Firebase. Cali tackled Authentication, setting up Firebase authentication, implementing protected routes, and building the login and sign-up functionality. Mikayla worked on the frontend pages, including designing and developing the onboarding survey and user profile pages. She also led the efforts in creating the app’s branding, including its visual design and logos.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Challenges we ran into
+One of the first challenges we encountered was deciding on the scope of our project. We had to ensure that our vision for mentHER was achievable within the limited time of a hackathon, while still being meaningful and scalable. We debated whether the platform should focus solely on clubs at UCI, like WICS, or aim for a broader audience of women in tech across different colleges and the industry. Ultimately, we chose to begin with WICS as a pilot group, grounding our design in a familiar use case with specific needs while building mentHER to be scalable for wider adoption in the future. This decision helped us stay focused throughout development while leaving room for future growth. Another significant challenge was authentication. We spent a lot of time ensuring users couldn’t access protected routes without signing in, which involved troubleshooting and eventually using a useEffect hook to redirect unauthenticated users. We also ran into complications when linking user data between Firebase Authentication and Firestore, since Firebase returns a UUID, we had to map it to internal user IDs to store additional information. Beyond that, we struggled with async functions and managing the complexities between server-side and client-side components. With so many layers in our application and multiple pages and layouts, debugging the UI proved to be especially time-consuming and required careful coordination across the team.
 
-## Learn More
+## Accomplishments that we're proud of
+One of our proudest accomplishments was getting authentication working seamlessly, which was crucial for ensuring users could sign in and access their personalized experience. We also successfully implemented page routing, which allowed for smooth navigation across the app. Learning to work with ShadCn components was another highlight, as it improved our design consistency and UI development speed. Additionally, we maintained a relatively clean Git history throughout the hackathon, which was an improvement from past experiences where we faced frequent merge conflicts due to not using branches properly. This time, we were intentional about using version control best practices, which made collaboration more efficient and less stressful! This was also the first hackathon where we felt we built and end product by the end of the hackathon that we were proud of, and we are genuinely excited to keeping working on this project and eventually bring it to life for our own club.
 
-To learn more about Next.js, take a look at the following resources:
+## What we learned
+Throughout this project, we learned how to set up Firebase and implement protected routes to ensure that only authenticated users could access certain parts of the app. We also gained a deeper understanding of authentication as a whole, including how to manage user sessions, securely store user data, and link authentication with our database. One of our biggest takeaways was learning how to seamlessly connect the frontend and backend. In the past, we’ve struggled with this, but this project pushed us to communicate more clearly between components and understand the flow of data throughout our application.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## What's next for mentHER
+Here are some things that we would like to implement in the future:
+* Implement a join code feature to allow club members to join specific mentorship programs as well as provide the opportunity for club collaborators, industry partners, and alumni to join the platform and become a mentor.
+* Create an admin site to “build” mentorship families that will generate family matches for the club based on the highest match scores.
+* Add an in app messaging system that would simplify the process for mentees/mentors to communicate with each other by keeping everything in one platform rather than outsourcing communication to external platforms like LinkedIn and Instagram.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[Link to Devpost](https://devpost.com/software/menther-kdh190)
