@@ -34,3 +34,5 @@ Here are some things that we would like to implement in the future:
 * Add an in app messaging system that would simplify the process for mentees/mentors to communicate with each other by keeping everything in one platform rather than outsourcing communication to external platforms like LinkedIn and Instagram.
 
 [Link to Devpost](https://devpost.com/software/menther-kdh190)
+<img width="1375" height="802" alt="Screenshot 2026-05-07 at 11 54 47 AM" src="https://github.com/user-attachments/assets/c9c809e6-0b92-4ce9-8638-c23a2e6d3e1a" />
+
